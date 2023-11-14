@@ -99,7 +99,7 @@ class _loginPageState extends State<loginPage> {
                             return 'الحـقـل فـارغ';
                           } else if (!emailValidate(value)) {
                             return 'ادخــل ايـمـيل صـحـيح';
-                          } else {
+                          }  else {
                             return null;
                           }
                         },
@@ -220,7 +220,7 @@ class _loginPageState extends State<loginPage> {
                         TextButton(
                           onPressed: () {
                             navigateToandFinish(context, signupPage());
-                              },
+                          },
                           child: Text("أنــشـى حـسـاب",
                               style: TextStyle(
                                   color: mainColor,

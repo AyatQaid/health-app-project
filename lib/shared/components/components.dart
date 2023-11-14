@@ -809,19 +809,7 @@ Widget buildDetailsItems(hospitalModel detailsObj, context) => Padding(
                     SizedBox(
                       height: 5,
                     ),
-                    /*      Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text("${detailsObj.email}"),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Icon(
-                          Icons.email_outlined,
-                          size: 25,
-                        )
-                      ],
-                    ),*/
+                   
                   ],
                 ),
               )

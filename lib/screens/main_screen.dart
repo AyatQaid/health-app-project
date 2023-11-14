@@ -91,216 +91,218 @@ class _mainPageState extends State<mainPage> {
         backgroundColor: Colors.white,
         appBar: mainPageAppBar(),
         endDrawer: navigationDrawer(),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            SizedBox(
-              height: 50,
-            ),
-            Text(" دلـيلك للمـنـشأت الطـبـية في عــدن  ",
-                style: TextStyle(
-                    fontFamily: 'Tajawal',
-                    fontSize: 25,
-                    fontWeight: FontWeight.normal)),
-            SizedBox(
-              height: 30,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      navigateTo(context, hospitalPage());
-                    },
-                    child: Container(
-                        height: 130,
-                        width: 80,
-                        margin: EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              SizedBox(
+                height: 50,
+              ),
+              Text(" دلـيلك للمـنـشأت الطـبـية في عــدن  ",
+                  style: TextStyle(
+                      fontFamily: 'Tajawal',
+                      fontSize: 25,
+                      fontWeight: FontWeight.normal)),
+              SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        navigateTo(context, hospitalPage());
+                      },
+                      child: Container(
+                          height: 130,
+                          width: 80,
+                          margin: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                  blurRadius: 3,
+                                  spreadRadius: 0,
+                                  // offset: Offset(0, 1),
+                                  color: Colors.grey)
+                            ],
+                            borderRadius: BorderRadius.circular(30),
+                            color: Colors.yellow.shade500,
+                          ),
+                          padding: EdgeInsets.only(
+                            top: 25,
+                          ),
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                "assets/images/hospital.png",
+                                width: 60,
+                                height: 60,
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                "مستشفيات",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontFamily: 'Tajawal',
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          )),
+                    ),
+                  ),
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        navigateTo(context, clinicPage());
+                      },
+                      child: Container(
+                          height: 130,
+                          width: 80,
+                          margin: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
                                 blurRadius: 3,
-                                spreadRadius: 0,
+                                spreadRadius: 2,
                                 // offset: Offset(0, 1),
-                                color: Colors.grey)
-                          ],
-                          borderRadius: BorderRadius.circular(30),
-                          color: Colors.yellow.shade500,
-                        ),
-                        padding: EdgeInsets.only(
-                          top: 25,
-                        ),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "assets/images/hospital.png",
-                              width: 60,
-                              height: 60,
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "مستشفيات",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Tajawal',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        )),
+                                color: Colors.grey,
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(30),
+                            color: Colors.blueAccent.shade100,
+                          ),
+                          padding: EdgeInsets.only(
+                            top: 25,
+                          ),
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                "assets/images/clinic.png",
+                                width: 60,
+                                height: 60,
+                              ),
+                              SizedBox(
+                                height: 6,
+                              ),
+                              Text(
+                                "عــيــادات",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontFamily: 'Tajawal',
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          )),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      navigateTo(context, clinicPage());
-                    },
-                    child: Container(
-                        height: 130,
-                        width: 80,
-                        margin: EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 3,
-                              spreadRadius: 2,
-                              // offset: Offset(0, 1),
-                              color: Colors.grey,
-                            )
-                          ],
-                          borderRadius: BorderRadius.circular(30),
-                          color: Colors.blueAccent.shade100,
-                        ),
-                        padding: EdgeInsets.only(
-                          top: 25,
-                        ),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "assets/images/clinic.png",
-                              width: 60,
-                              height: 60,
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              "عــيــادات",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Tajawal',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        )),
+                ],
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        navigateTo(context, labPage());
+                      },
+                      child: Container(
+                          height: 130,
+                          width: 80,
+                          margin: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                  blurRadius: 3,
+                                  spreadRadius: 0,
+                                  // offset: Offset(0, 1),
+                                  color: Colors.grey)
+                            ],
+                            borderRadius: BorderRadius.circular(30),
+                            color: Color.fromARGB(255, 62, 212, 32),
+                          ),
+                          padding: EdgeInsets.only(
+                            top: 25,
+                          ),
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                "assets/images/lab3.png",
+                                width: 60,
+                                height: 60,
+                              ),
+                              SizedBox(
+                                height: 6,
+                              ),
+                              Text(
+                                "مــخـتـبـرات",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontFamily: 'Tajawal',
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          )),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      navigateTo(context, labPage());
-                    },
-                    child: Container(
-                        height: 130,
-                        width: 80,
-                        margin: EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        navigateTo(context, doctorPage());
+                      },
+                      child: Container(
+                          height: 130,
+                          width: 80,
+                          margin: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
                                 blurRadius: 3,
-                                spreadRadius: 0,
+                                spreadRadius: 2,
                                 // offset: Offset(0, 1),
-                                color: Colors.grey)
-                          ],
-                          borderRadius: BorderRadius.circular(30),
-                          color: Color.fromARGB(255, 62, 212, 32),
-                        ),
-                        padding: EdgeInsets.only(
-                          top: 25,
-                        ),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "assets/images/lab3.png",
-                              width: 60,
-                              height: 60,
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              "مــخـتـبـرات",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Tajawal',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        )),
+                                color: Colors.grey,
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(30),
+                            color: Color.fromARGB(255, 224, 35, 183),
+                          ),
+                          padding: EdgeInsets.only(
+                            top: 25,
+                          ),
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                "assets/images/medical-team.png",
+                                width: 60,
+                                height: 60,
+                              ),
+                              SizedBox(
+                                height: 8,
+                              ),
+                              Text(
+                                "أطـــبــاء",
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 0, 0, 0),
+                                    fontFamily: 'Tajawal',
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          )),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      navigateTo(context, doctorPage());
-                    },
-                    child: Container(
-                        height: 130,
-                        width: 80,
-                        margin: EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 3,
-                              spreadRadius: 2,
-                              // offset: Offset(0, 1),
-                              color: Colors.grey,
-                            )
-                          ],
-                          borderRadius: BorderRadius.circular(30),
-                          color: Color.fromARGB(255, 224, 35, 183),
-                        ),
-                        padding: EdgeInsets.only(
-                          top: 25,
-                        ),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "assets/images/medical-team.png",
-                              width: 60,
-                              height: 60,
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              "أطـــبــاء",
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                  fontFamily: 'Tajawal',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        )),
-                  ),
-                ),
-              ],
-            )
-          ],
+                ],
+              )
+            ],
+          ),
         ));
   }
 }
