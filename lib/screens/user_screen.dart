@@ -25,6 +25,20 @@ class userPage extends StatefulWidget {
 }
 
 class _userPageState extends State<userPage> {
+  Future<void> getDataUser() async {
+    user = userModel(
+      id: "",
+      email: "",
+      username: "",
+      password: "",
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,9 +60,11 @@ class _userPageState extends State<userPage> {
                     width: 15,
                   ),
                   CircleAvatar(
+                      backgroundColor: Colors.grey.shade100,
                       radius: 50,
                       child: Image(
-                        image: AssetImage('assets/images/user.png'),
+                        width: 80,
+                        image: AssetImage('assets/images/health_app_logo.png'),
                       )),
                 ],
               ),
@@ -61,37 +77,7 @@ class _userPageState extends State<userPage> {
               SizedBox(
                 height: 5,
               ),
-              InkWell(
-                onTap: () {
-                  //navigateTo(context, profilePage());
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey.shade100),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.arrow_back_ios,
-                            color: mainColor,
-                          )),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "بــيــانــاتــي",
-                        style: mediumTextRegular,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
+             
               InkWell(
                 onTap: () {
                   navigateTo(context, myFavoritesPage());
@@ -160,20 +146,13 @@ class _userPageState extends State<userPage> {
               ),
               InkWell(
                 onTap: () async {
-                /*  if (CacheHlper.getData(key: "id") != null) {
-                    user = userModel(
-                      id: CacheHlper.getData(key: 'id'),
-                      email: CacheHlper.getData(key: 'email'),
-                      username: CacheHlper.getData(key: 'username'),
-                      password: CacheHlper.getData(key: 'password'),
-                    );
-                    print("sssss");
-                  }*/
-                  await CacheHlper.removeData(key: "id").then((value) {
-                    print(value);
+                  await CacheHlper.removeData(key: "id").then((value) async {
                     if (value == true) {
-                      Navigator.pop(context);
-                      navigateToandFinish(context, mainPage());
+                     await getDataUser();
+                      setState(() {
+                     navigateToandFinish(context, mainPage());
+
+                      });
                     }
                   });
                 },

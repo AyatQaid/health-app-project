@@ -1,5 +1,7 @@
 //import 'dart:html';
 
+//import 'dart:js';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,6 +17,7 @@ import 'package:healthapp/models/doctor_model.dart';
 import 'package:healthapp/models/emergency_model.dart';
 import 'package:healthapp/models/hospital_model.dart';
 import 'package:healthapp/models/lab_model.dart';
+import 'package:healthapp/models/user_model.dart';
 import 'package:healthapp/screens/aboutApp_screen.dart';
 import 'package:healthapp/screens/appointment_screen.dart';
 import 'package:healthapp/screens/article_content_screen.dart';
@@ -23,6 +26,8 @@ import 'package:healthapp/screens/details_screen.dart';
 import 'package:healthapp/screens/detalis_clinic_screen.dart';
 import 'package:healthapp/screens/doctor_details_screen.dart';
 import 'package:healthapp/screens/login_screen.dart';
+import 'package:healthapp/screens/myAppointment.dart';
+import 'package:healthapp/screens/myfavorites_screen.dart';
 import 'package:healthapp/screens/user_screen.dart';
 import 'package:healthapp/shared/components/constant.dart';
 import 'package:healthapp/shared/network/local/cache_helper.dart';
@@ -130,41 +135,13 @@ class navigationDrawer extends StatelessWidget {
 }
 
 Widget buildHeader(BuildContext context) => Material(
-      color: Colors.grey.shade200,
-      //color: Color.fromARGB(255, 89, 163, 91),
-      child: user != null
-          ? InkWell(
-              onTap: () {
-                navigateTo(context, userPage());
-              },
-              child: Container(
-                padding: EdgeInsets.only(
-                    bottom: 20,
-                    top: 20 + MediaQuery.of(context).padding.top * 0.5),
-                child: Column(
-                  children: [
-                    CircleAvatar(
-                        radius: 52,
-                        child: Image(
-                          // fit: BoxFit.cover,
-                          image: AssetImage('assets/images/user.png'),
-                        )),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Text(
-                      user!.username,
-                      style: largeTextBold,
-                    ),
-                    Text(
-                      user!.email,
-                      style: mediumTextRegular,
-                    ),
-                  ],
-                ),
-              ),
-            )
-          : Container(
+    color: Colors.grey.shade200,
+    child: user!=null
+        ? InkWell(
+            onTap: () {
+             navigateTo(context, userPage());
+            },
+            child: Container(
               padding: EdgeInsets.only(
                   bottom: 20,
                   top: 20 + MediaQuery.of(context).padding.top * 0.5),
@@ -175,21 +152,47 @@ Widget buildHeader(BuildContext context) => Material(
                       radius: 52,
                       child: Image(
                         width: 80,
-                        //height: 20,
-                        // fit: BoxFit.cover,
                         image: AssetImage('assets/images/health_app_logo.png'),
                       )),
                   SizedBox(
                     height: 12,
                   ),
                   Text(
-                    "تــطــبـيـق صــحـة",
+                    user!.username,
                     style: largeTextBold,
                   ),
+                   Text(
+                     user!.email,
+                     style: mediumTextRegular,
+                   ),
                 ],
               ),
             ),
-    );
+          )
+         : Container(
+                padding: EdgeInsets.only(
+                    bottom: 20,
+                    top: 20 + MediaQuery.of(context).padding.top * 0.5),
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                        backgroundColor: Colors.white,
+                        radius: 52,
+                        child: Image(
+                          width: 80,
+                          image:
+                              AssetImage('assets/images/health_app_logo.png'),
+                        )),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    Text(
+                      "تــطــبـيـق صــحـة",
+                      style: largeTextBold,
+                    ),
+                  ],
+                ),
+              ));
 
 Widget buildMenuItems(BuildContext context) => Container(
       padding: EdgeInsets.all(24),
@@ -197,12 +200,13 @@ Widget buildMenuItems(BuildContext context) => Container(
         crossAxisAlignment: WrapCrossAlignment.end,
         runSpacing: 16,
         children: [
-          /* if (user != null)
-            ListTile(
+          /* Visibility(
+           // visible: user != null ? user!.id.isEmpty : false,
+            child: ListTile(
               iconColor: mainColor,
               textColor: mainColor,
               title: Text(
-                "تـسجـيل الـخـروج",
+                "تــسـجـيل خـروج",
                 textAlign: TextAlign.end,
                 style: TextStyle(fontFamily: 'Tajawal', fontSize: 16),
               ),
@@ -211,30 +215,37 @@ Widget buildMenuItems(BuildContext context) => Container(
                 width: 30,
                 height: 30,
               ),
-           onTap: (() {
-  // FirebaseAuth.instance.signOut();
-
-         //CacheHlper.removeData(key: "id");
-           }),
-            )
-          else*/
-          ListTile(
-            iconColor: mainColor,
-            textColor: mainColor,
-            title: Text(
-              " تسـجــيل الدخــول",
-              textAlign: TextAlign.end,
-              style: TextStyle(fontFamily: 'Tajawal', fontSize: 16),
+              onTap: () async {
+                await CacheHlper.removeData(key: "id").then((value) async {
+                  if (value == true) {
+                  
+                 }
+                });
+              },
             ),
-            trailing: Image.asset(
-              "assets/images/login.png",
-              width: 30,
-              height: 30,
+          ),*/
+          //login
+          Visibility(
+            visible: user != null ? user!.id.isEmpty : true,
+            child: ListTile(
+              iconColor: mainColor,
+              textColor: mainColor,
+              title: Text(
+                " تسـجــيل الدخــول",
+                textAlign: TextAlign.end,
+                style: TextStyle(fontFamily: 'Tajawal', fontSize: 16),
+              ),
+              trailing: Image.asset(
+                "assets/images/login.png",
+                width: 30,
+                height: 30,
+              ),
+              onTap: () {
+                navigateTo(context, loginPage());
+              },
             ),
-            onTap: () {
-              navigateTo(context, loginPage());
-            },
           ),
+
           ListTile(
             iconColor: mainColor,
             textColor: mainColor,
@@ -293,21 +304,18 @@ Widget buildMenuItems(BuildContext context) => Container(
               SizedBox(
                 width: 5,
               ),
-                 IconButton(
+              IconButton(
                 onPressed: () {
                   launchUrl(Uri(
                     scheme: 'tel',
                     path: '779949435',
                   ));
                 },
-                icon: Icon(
-                  Icons.phone
-                ),
+                icon: Icon(Icons.phone),
                 iconSize: 30,
                 color: mainColor,
               ),
-             
-            SizedBox(
+              SizedBox(
                 width: 5,
               ),
               IconButton(
@@ -317,13 +325,10 @@ Widget buildMenuItems(BuildContext context) => Container(
                     path: '779784007',
                   ));
                 },
-                icon: Icon(
-                  Icons.email_outlined
-                ),
+                icon: Icon(Icons.email_outlined),
                 iconSize: 30,
                 color: mainColor,
               ),
-             
             ],
           )
         ],
@@ -809,7 +814,19 @@ Widget buildDetailsItems(hospitalModel detailsObj, context) => Padding(
                     SizedBox(
                       height: 5,
                     ),
-                   
+                    /*      Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text("${detailsObj.email}"),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Icon(
+                          Icons.email_outlined,
+                          size: 25,
+                        )
+                      ],
+                    ),*/
                   ],
                 ),
               )

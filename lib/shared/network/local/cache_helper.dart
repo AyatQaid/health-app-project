@@ -32,10 +32,7 @@ class CacheHlper {
     return await sharedPreferences.remove(key);
 
   }
-
-
 }
-
  /*static Future<void> signOut() async {
     // Clear the user data from SharedPreferences
 
