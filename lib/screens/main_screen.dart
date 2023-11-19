@@ -63,8 +63,9 @@ class _mainPageState extends State<mainPage> {
                   onTap: () {
                     if (user != null)
                       navigateTo(context, articlesPage());
-                    else
+                    else 
                       navigateTo(context, loginPage());
+                      
                    // navigateTo(context, articlesPage());
                   },
                   child: Image.asset(

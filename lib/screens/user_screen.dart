@@ -25,14 +25,7 @@ class userPage extends StatefulWidget {
 }
 
 class _userPageState extends State<userPage> {
-  Future<void> getDataUser() async {
-    user = userModel(
-      id: "",
-      email: "",
-      username: "",
-      password: "",
-    );
-  }
+ 
 
   @override
   void initState() {
@@ -148,7 +141,8 @@ class _userPageState extends State<userPage> {
                 onTap: () async {
                   await CacheHlper.removeData(key: "id").then((value) async {
                     if (value == true) {
-                     await getDataUser();
+                     //await getDataUser();
+                     user=null;
                       setState(() {
                      navigateToandFinish(context, mainPage());
 
